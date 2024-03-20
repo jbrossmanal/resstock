@@ -1318,16 +1318,16 @@ kestrel:
   sampling:
     time: 10
   postprocessing:
-    time: 2000
-    n_workers: 32
+    time: 200 #1200
+    n_workers: 5 #32
 
-#postprocessing:
-#  aws:
-#    region_name: us-west-2
-#    s3:
-#      bucket: resstock-panels
-#      prefix: resstock-panels_runs
-#    athena:
-#      glue_service_role: service-role/AWSGlueServiceRole-default
-#      database_name: resstock_panels 
-#      max_crawling_time: 1200
+postprocessing:
+  aws:
+    region_name: us-west-2
+    s3:
+      bucket: resstock-panels
+      prefix: resstock-panels_runs
+    athena:
+      glue_service_role: service-role/AWSGlueServiceRole-default
+      database_name: resstock_panels 
+      max_crawling_time: 200
