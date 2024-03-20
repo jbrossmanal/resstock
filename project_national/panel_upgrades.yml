@@ -186,7 +186,15 @@ references:
           - or: 
             - HVAC Heating Efficiency|Fuel Boiler, 76% AFUE
             - HVAC Heating Efficiency|Fuel Boiler, 80% AFUE
-            - HVAC Heating Efficiency|Fuel Boiler, 90% AFUE     
+            - HVAC Heating Efficiency|Fuel Boiler, 90% AFUE
+        costs: 
+        # Source: REMDb for replacing existing boiler to electric boiler
+        # then inflated from January 2018 to December 2023 using a 1.24 multiplier.
+          - value: 3844 
+            multiplier: Fixed (1)
+          - value: 0
+            multiplier: Size, Heating System Primary (kBtu/h)
+        lifetime: 24     
       - &electric_resistance_heating_heating_eff_fuel_furnace
         option: HVAC Heating Efficiency|Electric Furnace, 100% AFUE
         apply_logic: &apply_logic_fuel_furnace
@@ -194,17 +202,43 @@ references:
             - HVAC Heating Efficiency|Fuel Furnace, 60% AFUE
             - HVAC Heating Efficiency|Fuel Furnace, 76% AFUE
             - HVAC Heating Efficiency|Fuel Furnace, 80% AFUE
-            - HVAC Heating Efficiency|Fuel Furnace, 92.5% AFUE      
+            - HVAC Heating Efficiency|Fuel Furnace, 92.5% AFUE
+        costs: 
+        # Source: REMDb for replacing existing furnace to electric furnace
+        # inflated from January 2018 to December 2023) using a 1.24 multiplier.
+          - value: 1984 
+            multiplier: Fixed (1)
+          - value: 350
+            multiplier: Size, Heating System Primary (kBtu/h)
+        lifetime: 20      
       - &electric_resistance_heating_heating_eff_wall_floor_furnace
         option: HVAC Heating Efficiency|Electric Wall Furnace, 100% AFUE
         apply_logic: &apply_logic_fuel_wall_floor_furnace
           - or: 
             - HVAC Heating Efficiency|Fuel Wall/Floor Furnace, 60% AFUE
             - HVAC Heating Efficiency|Fuel Wall/Floor Furnace, 68% AFUE
+        costs: 
+        # TBD
+        # cost for the initial run Source: REMDb for replacing existing furnace to electric furnace
+        # inflated from January 2018 to December 2023) using a 1.24 multiplier.
+          - value: 1984 
+            multiplier: Fixed (1)
+          - value: 350
+            multiplier: Size, Heating System Primary (kBtu/h)
+        lifetime: 20
       - &electric_resistance_hvac_shared_eff_shared_heating_only
         option: HVAC Shared Efficiencies|Boiler Baseboards Heating Only, Electricity
         apply_logic:
           - HVAC Shared Efficiencies|Boiler Baseboards Heating Only, Fuel
+        costs: 
+        # TBD
+        # Assume $3844 cost for an average capacity (in euss results), then use a ratio to get cost 
+        # The average heating system size in euss is 45 kBtu/h .
+          - value: 0 
+            multiplier: Fixed (1)
+          - value: 85.42
+            multiplier: Size, Heating System Primary (kBtu/h)
+        lifetime: 24
       - &electric_resistance_hvac_shared_eff_shared_heating_cooling
         option: HVAC Shared Efficiencies|Fan Coil Heating and Cooling, Electricity
         apply_logic:
@@ -524,6 +558,14 @@ references:
             - Water Heater Efficiency|Fuel Oil Premium
             - Water Heater Efficiency|Natural Gas Premium
             - Water Heater Efficiency|Propane Premium
+        costs: 
+        # Source: REMDb for replacing non-electric tank water heater to electric tank water heater (EF=0.95)
+        # then inflated from January 2018 to December 2023) using a 1.24 multiplier.
+          - value: 1078.8 # for EF 0.92
+            multiplier: Fixed (1)
+          - value: 2.36
+            multiplier: Size, Water Heater (gal)
+        lifetime: 13
       - &water_heater_fuel_eff_standard
         option: Water Heater Efficiency|Electric Standard
         apply_logic:
@@ -533,12 +575,27 @@ references:
             - Water Heater Efficiency|Propane Standard
             - Water Heater Efficiency|FIXME Fuel Oil Indirect
             - Water Heater Efficiency|Other Fuel
+        costs: 
+        # Source: REMDb for replacing non-electric tank water heater to electric tank water heater (EF=0.95)
+        # then inflated from January 2018 to December 2023) using a 1.24 multiplier.
+          - value: 1016.8 # for EF 0.95
+            multiplier: Fixed (1)
+          - value: 4.34
+            multiplier: Size, Water Heater (gal)
+        lifetime: 13
       - &water_heater_fuel_eff_tankless
         option: Water Heater Efficiency|Electric Tankless
         apply_logic:
           - or:
             - Water Heater Efficiency|Natural Gas Tankless
             - Water Heater Efficiency|Propane Tankless
+        costs: 
+        # TBD
+          - value: 2356  # REMDb for replacing to tankless natural gas water heater (EF=0.96) and then inflated from January 2018 to December 2023) using a 1.24 multiplier
+            multiplier: Fixed (1)
+          - value: 0
+            multiplier: Size, Water Heater (gal)
+        lifetime: 20
 
     #### 2.2 240V HPWH, 3 options  ####
       - &240V_hpwh_50_gal
