@@ -3,7 +3,7 @@ os_version: 3.7.0
 os_sha: d5269793f1
 buildstock_directory: ../ # Relative to this file or absolute
 project_directory: project_national # Relative to buildstock_directory
-output_directory: /kfs2/projects/panels/test_run/test_run_20240320
+output_directory: /kfs2/projects/panels/run/test_run_20240322
 #weather_files_url: https://data.nrel.gov/system/files/156/BuildStock_TMY3_FIPS.zip
 weather_files_path: /kfs2/shared-projects/buildstock/weather/BuildStock_2018_FIPS.zip
 
@@ -11,7 +11,7 @@ weather_files_path: /kfs2/shared-projects/buildstock/weather/BuildStock_2018_FIP
 sampler:
   type: residential_quota
   args:
-    n_datapoints: 100
+    n_datapoints: 30000
 
 workflow_generator:
   type: residential_hpxml
@@ -1312,14 +1312,14 @@ upgrades:
       - *drill_and_fill 
   
 kestrel:
-  n_jobs: 40  #240 for 550K
+  n_jobs: 240
   minutes_per_sim: 4
   account: panels
   sampling:
-    time: 10
+    time: 100
   postprocessing:
-    time: 200 #1200
-    n_workers: 5 #32
+    time: 2000 
+    n_workers: 32 
 
 postprocessing:
   aws:
@@ -1330,4 +1330,4 @@ postprocessing:
     athena:
       glue_service_role: service-role/AWSGlueServiceRole-default
       database_name: resstock_panels 
-      max_crawling_time: 200
+      max_crawling_time: 2000
