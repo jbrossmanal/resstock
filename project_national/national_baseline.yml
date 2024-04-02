@@ -3,14 +3,14 @@ os_version: 3.7.0
 os_sha: d5269793f1
 buildstock_directory: ../ # Relative to this file or absolute
 project_directory: project_national # Relative to buildstock_directory
-output_directory: national_baseline_failed_panel_run
-weather_files_url: https://data.nrel.gov/system/files/156/Buildstock_TMY3_FIPS-1678817889.zip
-# weather_files_path: c:/OpenStudio/BuildStock_TMY3_FIPS.zip
+output_directory: /kfs2/projects/panels/run/test_run_20240401_panel
+#weather_files_url: https://data.nrel.gov/system/files/156/BuildStock_TMY3_FIPS.zip
+weather_files_path: /kfs2/shared-projects/buildstock/weather/BuildStock_2018_FIPS.zip
 
 sampler:
-  type: precomputed
+  type: residential_quota
   args:
-    sample_file: panel_run_buildstock_fail.csv
+    n_datapoints: 3000
 
 workflow_generator:
   type: residential_hpxml
@@ -59,14 +59,14 @@ baseline:
   n_buildings_represented: 139647020 # American Community Survey 2021 5-year, B25001, does not include territories ( 138765649 without AK and HI )
 
 kestrel:
-  n_jobs: 6  #240 for 550K
-  minutes_per_sim: 5
+  n_jobs: 20  #240 for 550K
+  minutes_per_sim: 6
   account: panels
   sampling:
     time: 20
   postprocessing:
     time: 100
-    n_workers: 2
+    n_workers: 4
 
 postprocessing:
   aws:
