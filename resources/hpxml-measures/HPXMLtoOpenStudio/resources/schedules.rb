@@ -592,7 +592,7 @@ class Schedule
   def self.annual_equivalent_full_load_hrs(modelYear, schedule)
     if schedule.to_ScheduleInterval.is_initialized
       timeSeries = schedule.to_ScheduleInterval.get.timeSeries
-      annual_flh = (timeSeries.averageValue * 8760) / timeSeries.max
+      annual_flh = timeSeries.averageValue * 8760
       return annual_flh
     end
 
@@ -1666,6 +1666,7 @@ class SchedulesFile
       end
     else # Annual
       equiv_full_load_hrs += schedules[col_name].sum / (60.0 / min_per_item)
+    equiv_full_load_hrs = equiv_full_load_hrs / schedules[col_name].max
     end
 
     return equiv_full_load_hrs
