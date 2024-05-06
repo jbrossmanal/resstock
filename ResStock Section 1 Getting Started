@@ -1,0 +1,72 @@
+# What is ResStock
+The U.S. residential building sector stock energy model, ResStock<sup>TM<\sup>
+, is a highly granular, bottom-up model that uses multiple data sources, statisical
+sampling methods, and advanced building energy simulations to estimate
+the annual energy consumption of the residential building stock across
+the contiguous United States.
+ResStock asks and answers two types of questions: 1) How is energy used in
+the coniguous U.S. residential housing stock? and 2) What are the impacts
+of modifying the housing stock with different technologies?
+ResStock, along with our partner model [ComStock](https://nrel.github.io/ComStock.github.io/), is one of the two models
+that make up BuildStock, full modeling of the U.S. building stock.
+
+#Quick Links
+##Access the Dataset
+Visit the [Datasets page](https://resstock.nrel.gov/datasets) for access to
+the published datasets and details about the ways to access them.
+
+#What does ResStock do
+ResStock is a U.S. Department of Energy (DOE), National Renewable Energy Laboratory (NREL)
+built, national residential building energy stock model. It enables a new approach
+to large-scale residential energy analysis scross the U.S. by combining large
+public and private data sources, statistical sampling, detailed sub-hourly
+building simulations, and high-performance computing.
+ResStock helps states, municipalities, utilities, and manufacturers understand
+the make-up of their area's housing stock; identify the energy, emissions, 
+or economic impacts of energy efficiency or electrification measures; and
+explore the impact of new technologies such as cold-climate heat pumps for
+both customers and the grid.
+ResStock can be tailored to answer the questions that many people have. The
+results are available in multiple different formats and resolutions:
+
+| Format | Resolution |
+| --- | --- }
+| Spatial | U.S., census region, climate zone, state, county, balancing authority, |
+|   | ISO/RTO, and Public Use Microdata Areas (PUMAs) |
+| Temporal | 15 minutes to annual aggregations |
+| Sectoral | All U.S. housing by Census and RECS classifications |
+
+#What Questions Can and Cannot be Answered with ResStock
+These are teh types of questions that can be answered via data processing,
+distillation, and visualization of this dataset.
+**Questions that can be answered:**
+    1. Housing makeup and current snapshot of energy consumption
+        a. How many homes are heated by electricity or gas? How leaky or
+        well insulated are these homes?
+        b. how are low-income and renter-occupied housing different from other
+        housing units?
+        c. What are the largest opportunities for energy efficiency and electrification?
+    2. Technology potentials and what-if scenarios
+        a. What is the range of savings per household if X,Y, or Z are implemented?
+        What are the total expected savings for a program or community with X, Y, or Z?
+        b. What are the energy, carbon, or utility bill impacts of a home envelope
+        upgrade versus a heat pump upgrade?
+    3. Addressable questions with timeseries and customization
+        a. Does residential electrification shift a region from summer-peaking
+        to winter-peaking?
+        b. What is the total change in peak demand from energy efficiency?
+        c. How do higher efficiency equipment or envelope improvements affect
+        the change in peak demand?
+**The following questions are housing adjacent, but cannot be answered by ResStock data alone:**
+    1. What is the potential for rooftop or community solar?
+    2. How many homes qualify for Weatherization Assistance Program or other
+    specific policies?
+    3. How might different income groups leverage financing mechanisms?
+    4. What is the cost of installing a heat pump?
+    5. What is the electrification potential for a specific home address?
+
+#How to use ResStock
+ResStock provides access to results through many different forms, including
+a web data viewer, dashboards, and raw data available for download.
+ResStock leverages and is deeply indebted to DOE's open-source building energy
+modeling ecosystem of [OpenStudio](https://openstudio.net/) and [Energy Plus](https://energyplus.net/).
